@@ -1,0 +1,41 @@
+<div class="container mt-3">
+  <button type="button" (click)="openModal()" class="float-right btn btn-info mb-5">Nuevo</button>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Programa</th>
+        <th>Tema</th>
+        <th>Descripción</th>
+        <th>Hrs Academicas</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Lugar</th>
+        <th colspan="2" class="text-center">Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let taller of talleres;" >
+        <td>{{taller.taId}}</td>
+        <td>{{taller.programa.proNombre}}</td>
+        <td>{{taller.taTema}}</td>
+        <td>{{taller.taDesc}}</td>
+        <td>{{taller.taHoraAcademicas}}</td>
+        <td>{{taller.taFecha | date:'d/MM/YYYY'}}</td>
+        <td>{{taller.taHora}}</td>
+        <td>{{taller.taLugar}}</td>
+        <td align="center">
+          <button type="button" class="btn btn-sm btn-warning" (click)="openModalEdit(taller)">Editar
+          </button>
+        </td>
+        <td align="center">
+          <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(taller)">Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
