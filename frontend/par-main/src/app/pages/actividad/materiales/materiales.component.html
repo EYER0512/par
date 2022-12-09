@@ -1,0 +1,45 @@
+<div class="container mt-3">
+<div class="container">
+  <button type="button" (click)="openModal()" class="float-right btn btn-info mb-5">Nuevo</button>
+</div>
+
+  <div class="form-group row" >
+    <label class="col-sm-3 col-form-label">Talleres</label>
+    <div class="col-sm-9">
+      <select class="form-control" formControlName="taId">
+        <option *ngFor="let material of materiales;" [value]="material.taId">{{material.taTema}}</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="table-responsive">
+
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Programa</th>
+        <th>Tema</th>
+        <th>link</th>
+        <th colspan="2" class="text-center">Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let material of materiales;" >
+        <td>{{material.maId}}</td>
+        <td>{{material.programa.proNombre}}</td>
+        <td>{{material.taller.taTema}}</td>
+        <td align="center">
+          <button type="button" class="btn btn-sm btn-warning" (click)="openModalEdit(material)">Editar
+          </button>
+        </td>
+        <td align="center">
+          <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(material)">Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
