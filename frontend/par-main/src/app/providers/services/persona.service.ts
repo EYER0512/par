@@ -11,5 +11,5 @@ export class PersonaService extends EntityDataService<IResponse> {
 
   constructor(protected override httpClient: HttpClient) {
     super(httpClient, END_POINTS.api+END_POINTS.actividad.personas)
-   }
+  }
 }

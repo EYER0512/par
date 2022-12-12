@@ -8,6 +8,8 @@ import {MaterialesComponent} from "./materiales/materiales.component";
 import {ProgramasComponent} from "./programas/programas.component";
 import {TalleresComponent} from "./talleres/talleres.component";
 import {TipoPersonaComponent} from "./tipo-persona/tipo-persona.component";
+import { CarrerasComponent } from "./carreras/carreras.component";
+import { PersonaComponent } from "./persona/persona.component";
 const routes: Routes = [
   {
     path:'',
@@ -28,6 +30,14 @@ const routes: Routes = [
       {
         path: 'tipopersonas',
         component: TipoPersonaComponent
+      },
+      {
+        path: 'carreras',
+        component: CarrerasComponent
+      },
+      {
+        path: 'persona',
+        component: PersonaComponent
       }
     ]
   }

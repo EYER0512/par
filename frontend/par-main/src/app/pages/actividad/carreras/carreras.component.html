@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let carrera of carreras; index as i" >
+      <tr *ngFor="let carrera of carreras;" >
         <td>{{carrera.caId}}</td>
         <td>{{carrera.caNombre}}</td>
         <td>{{carrera.caFacu}}</td>
@@ -18,7 +18,7 @@
           <button type="button" class="btn btn-sm btn-warning" (click)="openModalEdit(carrera)">Editar
           </button>
         </td>
-        <td align="center">s
+        <td align="center">
           <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(carrera)">Eliminar
           </button>
         </td>

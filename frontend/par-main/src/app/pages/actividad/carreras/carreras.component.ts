@@ -31,17 +31,9 @@ export class CarrerasComponent implements OnInit {
       keyboard: false,
       backdrop: 'static'
     });
-    modal.componentInstance.title = 'Modal';
+    modal.componentInstance.title = 'Nuevo';
     modal.result.then(res => {
       if(res.success) {
-        /*
-        Swal.fire({
-          title: 'Carrera',
-          text: `${res.message}`,
-          icon: 'success',
-          confirmButtonColor: '#7f264a',
-          timer: 1500
-        });*/
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -67,14 +59,15 @@ export class CarrerasComponent implements OnInit {
       if (res.success) {
         this.getCarreras();
         Swal.fire({
-          title: 'Editar',
+          position: 'center',
+          title: 'CarEdit',
           text: `${res.message}`,
           icon: 'success',
           confirmButtonColor: '#7f264a',
-          timer: 1500
+          timer: 1300
         });
+        this.getCarreras();
       }
-    }).catch(res =>{
     });
   }
   public onDelete(item: any): void {

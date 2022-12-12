@@ -1,1 +1,39 @@
-<p>persona works!</p>
+<div class="container mt-3">
+    <button type="button" (click)="openModal()" class="float-right btn btn-info mb-5">Nuevo</button>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>DNI</th>
+          <th>Nombres</th>
+          <th>Carrera</th>
+          <th>Apellidos P.</th>
+          <th>Apellidos M.</th>
+          <th>Fono</th>
+          <th colspan="2" class="text-center">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let persona of personas;" >
+          <td>{{persona.peId}}</td>
+          <td>{{persona.peDNI}}</td>
+          <td>{{persona.peNombres}}</td>
+          <td>{{persona.carrera.caNombre}}</td>
+          <td>{{persona.peApellidoP}}</td>
+          <td>{{persona.peApellidoM}}</td>
+          <td>{{persona.peFono}}</td>
+          <td align="center">
+            <button type="button" class="btn btn-sm btn-warning" (click)="openModalEdit(persona)">Editar
+            </button>
+          </td>
+          <td align="center">
+            <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(persona)">Eliminar
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
