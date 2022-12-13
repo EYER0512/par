@@ -1,63 +1,64 @@
 import { Component, OnInit } from '@angular/core';
-import {ProgramaService} from "../../../providers/services/programa.service";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {FormModalComponent} from "./form-modal/form-modal.component";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AsistenciasService } from 'src/app/providers/services/asistencias.service';
 import Swal from 'sweetalert2';
+import { FormModalAsistenciasComponent } from './form-modal-asistencias/form-modal-asistencias.component';
 
 @Component({
-  selector: 'app-programas',
-  templateUrl: './programas.component.html',
-  styleUrls: ['./programas.component.css']
+  selector: 'app-asistencias',
+  templateUrl: './asistencias.component.html',
+  styleUrls: ['./asistencias.component.css']
 })
-export class ProgramasComponent implements OnInit {
+export class AsistenciasComponent implements OnInit {
 
-  programas: any = [];
-  constructor(private programaService: ProgramaService,
+  asistencias: any = [];
+  constructor(private asistenciasService: AsistenciasService,
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getProgramas();
+    this.getAsistencias();
   }
 
-  getProgramas(): void {
-    this.programaService.getAll$().subscribe(response => {
-      this.programas = response.data || [];
+  getAsistencias(): void {
+    this.asistenciasService.getAll$().subscribe(response =>{
+      this.asistencias = response.data || [];
     });
   }
 
   openModal(): void {
-    const modal = this.modalService.open(FormModalComponent, {
+    const modal = this.modalService.open(FormModalAsistenciasComponent, {
       size: 'lg',
       keyboard: false,
       backdrop: 'static'
     });
-    modal.componentInstance.title = 'Nuevo';
+    modal.componentInstance.title = 'Registro';
     modal.result.then(res => {
       if(res.success) {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Programa',
+          title: 'Asistencia',
           text: `${res.message}`,
           showConfirmButton: false,
           timer: 1500
         })
-        this.getProgramas();
+        this.getAsistencias();
       }
     }).catch(err => {});
   }
+
   openModalEdit(item: any): any {
-    const modal = this.modalService.open(FormModalComponent, {
+    const modal = this.modalService.open(FormModalAsistenciasComponent, {
       size: 'lg',
       keyboard: false,
       backdrop: 'static'
     });
-    modal.componentInstance.proId = item.proId;
+    modal.componentInstance.asId = item.asId;
     modal.componentInstance.item = item;
     modal.componentInstance.title = 'Modificar';
     modal.result.then(res => {
       if (res.success) {
-        this.getProgramas();
+        this.getAsistencias();
         Swal.fire({
           title: 'Editar',
           text: `${res.message}`,
@@ -69,9 +70,10 @@ export class ProgramasComponent implements OnInit {
     }).catch(res => {
     });
   }
+
   public onDelete(item: any): void {
-    const ID = item.proId;
-    const mensaje = '¿ Desea eliminar? : ' + ' ' + item.proNombre;
+    const ID = item.asId;
+    const mensaje = '¿ Desea eliminar? : ' + ' ' + item.asistencias.asEstado;
     if (ID) {
       Swal.fire({
         title: 'Se eliminará el registro',
@@ -86,25 +88,23 @@ export class ProgramasComponent implements OnInit {
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.value) {
-          this.programaService.delete$(ID).subscribe(data => {
+          this.asistenciasService.delete$(ID).subscribe(data => {
             if (data.success) {
               Swal.fire({
                 title: 'Eliminado',
                 text: data.message,
-                icon:'success',
                 backdrop: true,
                 //animation: true,
                 showConfirmButton: false,
                 confirmButtonColor: '#7f264a',
                 timer: 1500,
               });
-              this.getProgramas();
+              this.getAsistencias();
             }
           });
         }
       });
     }
   }
-
 
 }

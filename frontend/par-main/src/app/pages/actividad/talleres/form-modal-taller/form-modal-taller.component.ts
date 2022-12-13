@@ -15,7 +15,7 @@ export class FormModalTallerComponent implements OnInit {
   @Input() taId: any;
   @Input() item: any;
   //@ts-ignore
-  frmTaller: FormGroup;
+  frmTaller!: FormGroup;
   programas: any = [];
   constructor(
     public activeModal: NgbActiveModal,

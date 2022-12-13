@@ -24,6 +24,8 @@ import { PersonaService } from 'src/app/providers/services/persona.service';
 import { CarrerasService } from 'src/app/providers/services/carreras.service';
 import { MaterialesService } from 'src/app/providers/services/materiales.service';
 import { FormModalCarreraComponent } from './carreras/form-modal-carrera/form-modal-carrera.component';
+import { AsistenciasComponent } from './asistencias/asistencias.component';
+import { FormModalAsistenciasComponent } from './asistencias/form-modal-asistencias/form-modal-asistencias.component';
 
 export let validateAndFlattenComponentImports = undefined;
 
@@ -43,7 +45,9 @@ export let validateAndFlattenComponentImports = undefined;
     FormModalMaterialesComponent,
     PersonaComponent,
     FormModalPersonaComponent,
-    FormModalCarreraComponent
+    FormModalCarreraComponent,
+    AsistenciasComponent,
+    FormModalAsistenciasComponent,
   ],
   imports: [
     CommonModule,

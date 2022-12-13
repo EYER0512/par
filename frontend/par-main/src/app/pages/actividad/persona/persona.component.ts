@@ -11,7 +11,7 @@ import { FormModalPersonaComponent } from './form-modal-persona/form-modal-perso
 })
 export class PersonaComponent implements OnInit {
 
-  personas: any =[];
+  personas: any = [];
   constructor(private personaService: PersonaService,
               private modalService: NgbModal) { }
 
@@ -37,14 +37,14 @@ export class PersonaComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Taller',
+          title: 'Persona',
           text: `${res.message}`,
           showConfirmButton: false,
           timer: 1500
         })
         this.getPersona();
       }
-    })
+    }).catch(err => {});
   }
   openModalEdit(item: any): any {
     const modal = this.modalService.open(FormModalPersonaComponent, {
@@ -52,23 +52,24 @@ export class PersonaComponent implements OnInit {
       keyboard: false,
       backdrop: 'static'
     });
-    modal.componentInstance.taId = item.peId;
+    modal.componentInstance.peId = item.peId;
     modal.componentInstance.item = item;
     modal.componentInstance.title = 'Modificar';
     modal.result.then(res => {
       if (res.success) {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Taller',
-          text: `${res.message}`,
-          showConfirmButton: false,
-          timer: 1300
-        });
         this.getPersona();
+        Swal.fire({
+          title: 'Editar',
+          text: `${res.message}`,
+          icon: 'success',
+          confirmButtonColor: '#7f264a',
+          timer: 1500
+        });
       }
+    }).catch(res => {
     });
   }
+
   public onDelete(item: any): void {
     const ID = item.peId;
     const mensaje = '¿ Desea eliminar? : ' + ' ' + item.peNombres;

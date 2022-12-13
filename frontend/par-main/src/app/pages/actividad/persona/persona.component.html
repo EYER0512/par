@@ -7,10 +7,11 @@
           <th>#</th>
           <th>DNI</th>
           <th>Nombres</th>
-          <th>Carrera</th>
           <th>Apellidos P.</th>
           <th>Apellidos M.</th>
           <th>Fono</th>
+          <th>Tipo Persona</th>
+          <th>Carrera</th>
           <th colspan="2" class="text-center">Opciones</th>
         </tr>
         </thead>
@@ -19,10 +20,11 @@
           <td>{{persona.peId}}</td>
           <td>{{persona.peDNI}}</td>
           <td>{{persona.peNombres}}</td>
-          <td>{{persona.carrera.caNombre}}</td>
           <td>{{persona.peApellidoP}}</td>
           <td>{{persona.peApellidoM}}</td>
           <td>{{persona.peFono}}</td>
+          <td>{{persona.tipoPersona.tpNombre}}</td>
+          <td>{{persona.carrera.caNombre}}</td>
           <td align="center">
             <button type="button" class="btn btn-sm btn-warning" (click)="openModalEdit(persona)">Editar
             </button>

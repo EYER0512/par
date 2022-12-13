@@ -1,5 +1,5 @@
 import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
+import {Component, NgModule} from "@angular/core";
 
 //import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 //import * as path from "path";
@@ -10,6 +10,7 @@ import {TalleresComponent} from "./talleres/talleres.component";
 import {TipoPersonaComponent} from "./tipo-persona/tipo-persona.component";
 import { CarrerasComponent } from "./carreras/carreras.component";
 import { PersonaComponent } from "./persona/persona.component";
+import { AsistenciasComponent } from "./asistencias/asistencias.component";
 const routes: Routes = [
   {
     path:'',
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'persona',
         component: PersonaComponent
+      },
+      {
+        path: 'asistencias',
+        component: AsistenciasComponent
       }
     ]
   }

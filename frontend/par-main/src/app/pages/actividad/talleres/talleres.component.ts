@@ -47,7 +47,7 @@ export class TalleresComponent implements OnInit {
         })
         this.getTalleres();
       }
-    })
+    }).catch(err => {});
   }
   openModalEdit(item: any): any {
     const modal = this.modalService.open(FormModalTallerComponent, {
