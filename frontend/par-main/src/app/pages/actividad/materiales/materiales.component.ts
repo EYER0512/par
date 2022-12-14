@@ -17,14 +17,15 @@ export class MaterialesComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.getMateriales();
 
   }
-  filtro(){
-this.getMateriales(this.materiales);
-  }
-  getMateriales(item: any): any {
 
-    this.materialesService.getAll$().subscribe(response => {
+
+  getMateriales(): any {
+
+    this.materialesService.getAll$().subscribe(response => { console.log(response);
+
       this.materiales = response.data || [];})
   }
 
@@ -45,7 +46,7 @@ this.getMateriales(this.materiales);
           showConfirmButton: false,
           timer: 1500
         })
-        this.getMateriales(this.materiales);
+        this.getMateriales();
       }
     })
   }
@@ -56,7 +57,7 @@ this.getMateriales(this.materiales);
         keyboard: false,
         backdrop: 'static'
       });
-      modal.componentInstance.taId = item.maId;
+      modal.componentInstance.maId = item.maId;
       modal.componentInstance.item = item;
       modal.componentInstance.title = 'Modificar';
       modal.result.then(res => {
@@ -69,12 +70,12 @@ this.getMateriales(this.materiales);
             showConfirmButton: false,
             timer: 1300
           });
-          this.getMateriales(this.materiales);
+          this.getMateriales();
         }
       });
     }
     public onDelete(item: any): void {
-      const ID = item.taId;
+      const ID = item.maId;
       const mensaje = '¿ Desea eliminar? : ' + ' ' + item.taTema;
       if (ID) {
         Swal.fire({
@@ -101,7 +102,7 @@ this.getMateriales(this.materiales);
                   confirmButtonColor: '#7f264a',
                   timer: 1500,
                 });
-                this.getMateriales(this.materiales);
+                this.getMateriales();
               }
             });
           }

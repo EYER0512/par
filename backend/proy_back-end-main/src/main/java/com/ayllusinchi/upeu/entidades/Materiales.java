@@ -26,14 +26,12 @@ public class Materiales {
     private Long maId;
     
     @Column(name = "ma_name")
-    private String maName;
+    private String malink;
     
     @ManyToOne
     @JoinColumn(name = "ta_id")
     private Taller taller;
     
-    @ManyToOne
-    @JoinColumn(name = "ca_id")
-    private TipoMateriales tipoMateriales;
+
     
 }

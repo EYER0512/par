@@ -16,8 +16,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let persona of personas;" >
-          <td>{{persona.peId}}</td>
+        <tr *ngFor="let persona of personas; let i = index;" >
+          <td>{{i+1}}</td>
           <td>{{persona.peDNI}}</td>
           <td>{{persona.peNombres}}</td>
           <td>{{persona.peApellidoP}}</td>

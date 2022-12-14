@@ -37,6 +37,8 @@ export class FormModalMaterialesComponent implements OnInit {
   getTalleres(): void {
     this.tallerService.getAll$().subscribe(response => {
       this.talleres = response.data || [];
+      console.log("tal", response);
+
     });
   }
 
@@ -49,17 +51,19 @@ export class FormModalMaterialesComponent implements OnInit {
   }
 
   save(): void {
-    let data = Object.assign(this.frmMateriales.value, {talleres: {taId: this.frmMateriales.value.taId}});
-    this.tallerService.update$(this.maId, data).subscribe(response => {
+    let data = Object.assign(this.frmMateriales.value, {taller: {taId: this.frmMateriales.value.taId}});
+    console.log("dato", data);
+
+    this.materialesService.add$(data).subscribe(response => {
       if (response.success) {
-        this.activeModal.close({success: true, message:response.message});
+        this.activeModal.close({success: true, message: response.message});
       }
     });
   }
 
   update(): void{
-    let data = Object.assign(this.frmMateriales.value, {talleres: {taId: this.frmMateriales.value.taId}});
-    this.tallerService.update$(this.maId, data).subscribe(response => {
+    let data = Object.assign(this.frmMateriales.value, {taller: {taId: this.frmMateriales.value.taId}});
+    this.materialesService.update$(this.maId, data).subscribe(response => {
       if (response.success) {
         this.activeModal.close({success: true, message:response.message});
       }
@@ -67,7 +71,7 @@ export class FormModalMaterialesComponent implements OnInit {
   }
 
   updateData(): void {
-    let data = Object.assign(this.frmMateriales.value, {talleres: {taId: this.frmMateriales.value.taId}});
+    let data = Object.assign(this.frmMateriales.value, {taller: {taId: this.frmMateriales.value.taId}});
     this.frmMateriales.patchValue(data);
   }
 

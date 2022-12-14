@@ -58,13 +58,16 @@ export class FormModalPersonaComponent implements OnInit {
       peApellidoM: ['', [Validators.required]],
       peFono: ['', [Validators.required]],
       tpId: ['',[Validators.required]],
-      caId: ['', [Validators.required]],
+      caId: [''],
     };
     this.frmPersona=this.formBuilder.group(controls);
   }
 
   save(): void {
+    if(this.frmPersona.value.tpId==2){
+      this.frmPersona.patchValue({caId: '4'});}
     let data = Object.assign(this.frmPersona.value, {carrera: {caId: this.frmPersona.value.caId}, tipoPersona:{tpId: this.frmPersona.value.tpId}});
+    console.log(data);
     this.personaService.add$(data).subscribe(response => {
       if (response.success) {
         this.activeModal.close({success: true, message:response.message});
@@ -73,6 +76,8 @@ export class FormModalPersonaComponent implements OnInit {
   }
 
   update(): void{
+    if(this.frmPersona.value.tpId==2){
+      this.frmPersona.patchValue({caId: '4'});}
     let data = Object.assign(this.frmPersona.value, {carrera: {caId: this.frmPersona.value.caId}, tipoPersona:{tpId: this.frmPersona.value.tpId}});
     this.personaService.update$(this.peId, data).subscribe(response => {
       if (response.success) {

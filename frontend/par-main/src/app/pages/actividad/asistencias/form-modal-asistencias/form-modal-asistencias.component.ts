@@ -58,12 +58,18 @@ export class FormModalAsistenciasComponent implements OnInit {
   }
 
   save(): void {
+    let datos = this.frmAsistencia.value;
     let data = Object.assign(this.frmAsistencia.value, {persona: {peId: this.frmAsistencia.value.peId}, taller: {taId: this.frmAsistencia.value.taId}});
+    console.log("asis",datos);
+    console.log("asis2",data);
     this.asistenciasService.add$(data).subscribe(response =>{
+      console.log("resp", response);
+
       if(response.success) {
         this.activeModal.close({success: true, message:response.message});
       }
-    })
+    }
+    )
   }
 
   update(): void{

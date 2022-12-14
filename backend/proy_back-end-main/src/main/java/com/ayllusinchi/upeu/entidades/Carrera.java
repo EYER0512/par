@@ -28,11 +28,8 @@ public class Carrera {
     @Column(name = "ca_nombre")
     private String caNombre;
     
-    @Column(name = "ca_color")
-    private String caColor;
-    
-    @ManyToOne
-    @JoinColumn(name = "fa_id")
-    private Facultad facultad;
+    @Column(name = "ca_facu")
+    private String caFacu;
+
     
 }

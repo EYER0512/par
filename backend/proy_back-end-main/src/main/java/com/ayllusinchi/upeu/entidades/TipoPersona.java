@@ -23,10 +23,8 @@ public class TipoPersona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tpId;
     
-    @Column(name = "tp_nombre")
+    @Column(name = "tp_tipo")
     private String tpNombre;
     
-    @Column(name = "tp_des")
-    private String tpDesc;
-    
+
 }

@@ -2,10 +2,18 @@ import {RouterModule, Routes} from "@angular/router";
 import {MainPageComponent} from "./core/main-page/main-page.component";
 import {NgModule} from "@angular/core";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { HomeComponent } from "./core/home/home.component";
 
 const routes: Routes = [
   {
-    path:'',
+    path: 'home',
+    component: HomeComponent, children: [ {
+      path: 'login',
+    loadChildren: ()=> import('./core/core.module').then(m => m.CoreModule)
+  }]
+  },
+  {
+    path:'compo',
     component: MainPageComponent,
     children: [
       {
@@ -19,6 +27,7 @@ const routes: Routes = [
           .then(m => m.actividadmodule)
 
       }]
+
   },
   {
     path: '**',

@@ -55,7 +55,11 @@ export class FormModalTallerComponent implements OnInit {
 
   save(): void {
     let data = Object.assign(this.frmTaller.value, {programa: {proId: this.frmTaller.value.proId}});
+    console.log("valor", data);
+
     this.tallerService.add$(data).subscribe(response =>{
+      console.log("res",response );
+
       if (response.success) {
         this.activeModal.close({success: true, message: response.message});
       }

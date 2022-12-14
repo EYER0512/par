@@ -4,6 +4,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './main-page/header/header.component';
 import { FooterComponent } from './main-page/footer/footer.component';
 import {RouterModule} from "@angular/router";
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -11,7 +12,8 @@ import {RouterModule} from "@angular/router";
   declarations: [
     MainPageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

@@ -2,11 +2,9 @@ package com.ayllusinchi.upeu.Controller;
 
 import com.ayllusinchi.upeu.Services.CarreraService;
 import com.ayllusinchi.upeu.entidades.Carrera;
-import com.ayllusinchi.upeu.entidades.Facultad;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

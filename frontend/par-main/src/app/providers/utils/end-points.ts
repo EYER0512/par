@@ -10,8 +10,8 @@ export const END_POINTS = {
       programa: 'programas',
       taller: 'talleres',
       tipopersona: 'tipopersonas',
-      materiales: 'materiales',
+      material: 'materiales',
       carreras: 'carreras',
-      asistencias: 'asistecias'
+      asistencias: 'Asistencias'
     },
 };
